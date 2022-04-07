@@ -20,7 +20,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void ReadSettings();         // 读取配置
+    void WriteSettings();        // 写入配置
+
 private:
     Ui::MainWindow *ui;
+
+private:
+    void connections();
 };
 #endif // MAINWINDOW_H

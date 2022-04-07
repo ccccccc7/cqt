@@ -9,14 +9,14 @@
 #ifndef UI_MAIN_WINDOW_H
 #define UI_MAIN_WINDOW_H
 
-#include <QVariant>
-#include <QApplication>
-#include <QMainWindow>
-#include <QMenuBar>
-#include <QPushButton>
-#include <QStatusBar>
-#include <QVBoxLayout>
-#include <QWidget>
+#include <QtCore/QVariant>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -26,9 +26,9 @@ public:
     QWidget *centralwidget;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
+    QPushButton *btn_mapping;
+    QPushButton *btn_record;
+    QPushButton *btn_play;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -41,24 +41,24 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(690, 130, 102, 311));
+        layoutWidget->setGeometry(QRect(670, 130, 112, 311));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        pushButton = new QPushButton(layoutWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        btn_mapping = new QPushButton(layoutWidget);
+        btn_mapping->setObjectName(QString::fromUtf8("btn_mapping"));
 
-        verticalLayout->addWidget(pushButton);
+        verticalLayout->addWidget(btn_mapping);
 
-        pushButton_2 = new QPushButton(layoutWidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        btn_record = new QPushButton(layoutWidget);
+        btn_record->setObjectName(QString::fromUtf8("btn_record"));
 
-        verticalLayout->addWidget(pushButton_2);
+        verticalLayout->addWidget(btn_record);
 
-        pushButton_3 = new QPushButton(layoutWidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        btn_play = new QPushButton(layoutWidget);
+        btn_play->setObjectName(QString::fromUtf8("btn_play"));
 
-        verticalLayout->addWidget(pushButton_3);
+        verticalLayout->addWidget(btn_play);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -77,9 +77,9 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        btn_mapping->setText(QCoreApplication::translate("MainWindow", "mapping", nullptr));
+        btn_record->setText(QCoreApplication::translate("MainWindow", "record", nullptr));
+        btn_play->setText(QCoreApplication::translate("MainWindow", "play", nullptr));
     } // retranslateUi
 
 };

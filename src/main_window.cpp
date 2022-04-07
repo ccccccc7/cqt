@@ -10,11 +10,21 @@ MainWindow::MainWindow(QWidget *parent)
         , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    ReadSettings();
+    connections();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::connections() {
+    QObject::connect(ui->btn_mapping, &QPushButton::clicked, [&](){
+        ui->btn_mapping->setText("hello world");
+    });
+
 }
 
 

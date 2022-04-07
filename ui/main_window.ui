@@ -17,31 +17,31 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>690</x>
+      <x>670</x>
       <y>130</y>
-      <width>102</width>
+      <width>112</width>
       <height>311</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="btn_mapping">
        <property name="text">
-        <string>PushButton</string>
+        <string>mapping</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="btn_record">
        <property name="text">
-        <string>PushButton</string>
+        <string>record</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="btn_play">
        <property name="text">
-        <string>PushButton</string>
+        <string>play</string>
        </property>
       </widget>
      </item>
