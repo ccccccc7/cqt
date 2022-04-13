@@ -6,6 +6,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSettings>
+
 #include "ui_main_window.h"
 
 QT_BEGIN_NAMESPACE
@@ -22,11 +24,24 @@ public:
 
     void ReadSettings();         // 读取配置
     void WriteSettings();        // 写入配置
+    void initUi();               // 初始化Ui
+
+    enum CAMERAMODE{
+        indoor,
+        outdoor
+    };
 
 private:
     Ui::MainWindow *ui;
+    QString livox_command;
+    QString camera_command;
+    QString camera_mode;
+    QString mapping_command;
 
 private:
     void connections();
+
+private slots:
+    void on_btn_mapping_clicked();
 };
 #endif // MAINWINDOW_H
