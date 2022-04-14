@@ -5,14 +5,15 @@
 #include "../include/cq_monitor/main_window.h"
 
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(int argc, char **argv, QWidget *parent)
         : QMainWindow(parent)
-        , ui(new Ui::MainWindow)
+        , ui(new Ui::MainWindow), qnode(argc, argv)
 {
     ui->setupUi(this);
+    connect(&qnode, SIGNAL(RosShutDown()), this, SLOT(close()));
 
     // 读取配置
-    ReadSettings();
+    // ReadSettings();
     // 初始化UI
     initUi();
     //链接槽函数
@@ -52,7 +53,9 @@ void MainWindow::ReadSettings() {
 }
 
 void MainWindow::initUi() {
-
+    qnode.init();
+    rvizWidget = new RvizWidget(ui->verticalLayout_rviz, "qrviz");
+    rvizWidget->show();
 }
 
 void MainWindow::on_btn_mapping_clicked() {

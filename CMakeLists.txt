@@ -1,9 +1,14 @@
 cmake_minimum_required(VERSION 3.19)
 project(cqt)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(CMAKE_PREFIX_PATH "/usr/local/Cellar/qt@5/5.15.3")
+find_package(catkin REQUIRED COMPONENTS rviz roscpp sensor_msgs)
+include_directories(${catkin_INCLUDE_DIRS})
+catkin_package()
+
+set(CMAKE_PREFIX_PATH "/usr/lib/x86_64-linux-gnu")
 
 set(ModuleList
         Core
@@ -14,7 +19,7 @@ set(ModuleList
         )
 
 foreach(QtModule ${ModuleList})
-    set(Qt5${QtModule}_DIR ${CMAKE_PREFIX_PATH}/lib/cmake/Qt5${QtModule})
+    set(Qt5${QtModule}_DIR ${CMAKE_PREFIX_PATH}/cmake/Qt5${QtModule})
     message("foreach-> Qt5${QtModule}_DIR : ${Qt5${QtModule}_DIR}")
 
     set(QT_LIBRARIES ${QT_LIBRARIES} Qt5::${QtModule})
@@ -39,5 +44,5 @@ file(GLOB_RECURSE QT_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} FOLLOW_SYMLINK
 
 
 
-add_executable(cqt ${QT_FORMS_HPP} ${QT_SOURCES} ${QT_MOC_HPP})
-target_link_libraries (cqt ${QT_LIBRARIES}) # 工程名
+add_executable(cqt ${QT_FORMS_HPP} ${QT_SOURCES} ${QT_MOC_HPP} src/qnode.cpp include/cq_monitor/qnode.h)
+target_link_libraries (cqt ${QT_LIBRARIES} ${catkin_LIBRARIES}) # 工程名

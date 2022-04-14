@@ -9,6 +9,8 @@
 #include <QSettings>
 
 #include "ui_main_window.h"
+#include "RvizWidget.h"
+#include "qnode.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,7 +21,7 @@ class MainWindow : public QMainWindow
 Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(int argc, char **argv, QWidget *parent = nullptr);
     ~MainWindow();
 
     void ReadSettings();         // 读取配置
@@ -33,6 +35,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    RvizWidget *rvizWidget = NULL;
     QString livox_command;
     QString camera_command;
     QString camera_mode;
@@ -43,5 +46,8 @@ private:
 
 private slots:
     void on_btn_mapping_clicked();
+
+private:
+    QNode qnode;
 };
 #endif // MAINWINDOW_H

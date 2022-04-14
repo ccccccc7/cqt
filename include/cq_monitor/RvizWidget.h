@@ -8,17 +8,28 @@
 #include <QThread>
 
 #include <rviz/display.h>
-#include <rviz/render_pannel.h>
+#include <rviz/render_panel.h>
+#include <rviz/visualization_manager.h>
+#include <rviz/tool_manager.h>
+#include <rviz/tool.h>
+
+#include <QVBoxLayout>
 
 class RvizWidget : public QThread{
-public:
     Q_OBJECT
-    RvizWidget();
+public:
+    RvizWidget(QVBoxLayout* layout, QString node_name);
+
+    void show();
+
 private:
     // rviz容器
     rviz::RenderPanel* render_panel_;
     rviz::VisualizationManager* manager_;
     rviz::Display* grid_ = NULL;
+
+    QVBoxLayout* layout = NULL;
+    rviz::ToolManager* tool_manager_;
 };
 
 
