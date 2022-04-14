@@ -7,6 +7,7 @@
 
 #include <QMainWindow>
 #include <QSettings>
+#include <QMessageBox>
 
 #include "ui_main_window.h"
 #include "RvizWidget.h"
@@ -38,7 +39,7 @@ private:
     RvizWidget *rvizWidget = NULL;
     QString livox_command;
     QString camera_command;
-    QString camera_mode;
+    CAMERAMODE camera_mode = CAMERAMODE::outdoor;
     QString mapping_command;
 
 private:
@@ -46,6 +47,7 @@ private:
 
 private slots:
     void on_btn_mapping_clicked();
+    void slot_changeCameraType(int);
 
 private:
     QNode qnode;

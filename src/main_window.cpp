@@ -1,14 +1,12 @@
 /**  
  * @date 2022/4/7.
 **/
-
+#define enum_to_string(x) #x
 #include "../include/cq_monitor/main_window.h"
 
 
 MainWindow::MainWindow(int argc, char **argv, QWidget *parent)
-        : QMainWindow(parent)
-        , ui(new Ui::MainWindow), qnode(argc, argv)
-{
+        : QMainWindow(parent), ui(new Ui::MainWindow), qnode(argc, argv) {
     ui->setupUi(this);
     connect(&qnode, SIGNAL(RosShutDown()), this, SLOT(close()));
 
@@ -20,8 +18,7 @@ MainWindow::MainWindow(int argc, char **argv, QWidget *parent)
     connections();
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
 }
 
@@ -29,10 +26,11 @@ MainWindow::~MainWindow()
  * Implementation
  */
 void MainWindow::connections() {
-    QObject::connect(ui->btn_mapping, &QPushButton::clicked, [&](){
+    QObject::connect(ui->btn_mapping, &QPushButton::clicked, [&]() {
         ui->btn_mapping->setText("hello world");
     });
-
+    QObject::connect(ui->comboBox_play, SIGNAL(currentIndexChanged(int)), this, SLOT(slot_changeCameraType(int)));
+    QObject::connect(ui->pushButton_play, &QPushButton::clicked, [=]{QMessageBox::information(this, "information", camera_command);});
 }
 
 void MainWindow::ReadSettings() {
@@ -62,6 +60,19 @@ void MainWindow::on_btn_mapping_clicked() {
     system(livox_command.toStdString().c_str());
     system(camera_command.toStdString().c_str());
     system(mapping_command.toStdString().c_str());
+}
+
+void MainWindow::slot_changeCameraType(int index) {
+    switch (index) {
+        case 0:
+            camera_mode = CAMERAMODE::outdoor;
+            camera_command = "oslaunch hikrobot_camera hikrobot_camera_outdoor.launch";
+            break;
+        case 1:
+            camera_mode = CAMERAMODE::indoor;
+            camera_command = "oslaunch hikrobot_camera hikrobot_camera_indoor.launch";
+            break;
+    }
 }
 
 

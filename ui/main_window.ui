@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1170</width>
+    <width>1181</width>
     <height>697</height>
    </rect>
   </property>
@@ -20,7 +20,7 @@
       <x>10</x>
       <y>0</y>
       <width>1171</width>
-      <height>651</height>
+      <height>641</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -29,70 +29,276 @@
       <height>0</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(238, 238, 236);</string>
     </property>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>910</x>
-      <y>500</y>
-      <width>201</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="btn_play">
-       <property name="text">
-        <string>play</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_record">
-       <property name="maximumSize">
-        <size>
-         <width>1059</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>record</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_mapping">
-       <property name="text">
-        <string>mapping</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
       <x>30</x>
       <y>50</y>
-      <width>851</width>
+      <width>841</width>
       <height>511</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_rviz"/>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>相机状态：</string>
+    </property>
+    <property name="margin">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_camera_status">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>10</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_play">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>510</y>
+      <width>100</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>100</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="currentText">
+     <string>室外模式</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>室外模式</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>室内模式</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>60</y>
+      <width>291</width>
+      <height>531</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(243, 243, 243);</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_lidar_status">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>10</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>10</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>100</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>激光雷达状态：</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_mapping">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>540</y>
+      <width>100</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>100</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>mapping</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_record">
+    <property name="geometry">
+     <rect>
+      <x>1000</x>
+      <y>540</y>
+      <width>50</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>50</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>record</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_play">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>540</y>
+      <width>100</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>100</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>play</string>
+    </property>
+   </widget>
+   <zorder>listView</zorder>
+   <zorder>widget</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>horizontalLayoutWidget</zorder>
+   <zorder>verticalLayoutWidget</zorder>
+   <zorder>label</zorder>
+   <zorder>pushButton_camera_status</zorder>
+   <zorder>verticalLayoutWidget_2</zorder>
+   <zorder>horizontalLayoutWidget_2</zorder>
+   <zorder>btn_mapping</zorder>
+   <zorder>btn_record</zorder>
+   <zorder>pushButton_play</zorder>
+   <zorder>comboBox_play</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1170</width>
+     <width>1181</width>
      <height>28</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>菜单</string>
+    </property>
+   </widget>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
