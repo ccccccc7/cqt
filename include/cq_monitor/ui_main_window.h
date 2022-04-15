@@ -34,8 +34,9 @@ public:
     QVBoxLayout *verticalLayout_rviz;
     QLabel *label;
     QPushButton *pushButton_camera_status;
-    QComboBox *comboBox_play;
     QWidget *widget;
+    QComboBox *comboBox_play;
+    QPushButton *pushButton;
     QPushButton *pushButton_lidar_status;
     QLabel *label_2;
     QPushButton *btn_mapping;
@@ -54,7 +55,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         listView = new QListView(centralwidget);
         listView->setObjectName(QString::fromUtf8("listView"));
-        listView->setGeometry(QRect(10, 0, 1171, 641));
+        listView->setGeometry(QRect(0, 0, 1171, 641));
         listView->setMinimumSize(QSize(1171, 0));
         QFont font;
         font.setPointSize(10);
@@ -85,17 +86,21 @@ public:
         pushButton_camera_status->setBaseSize(QSize(20, 20));
         pushButton_camera_status->setFont(font);
         pushButton_camera_status->setCursor(QCursor(Qt::PointingHandCursor));
-        comboBox_play = new QComboBox(centralwidget);
-        comboBox_play->addItem(QString());
-        comboBox_play->addItem(QString());
-        comboBox_play->setObjectName(QString::fromUtf8("comboBox_play"));
-        comboBox_play->setGeometry(QRect(890, 510, 100, 20));
-        comboBox_play->setMaximumSize(QSize(100, 20));
-        comboBox_play->setFont(font);
         widget = new QWidget(centralwidget);
         widget->setObjectName(QString::fromUtf8("widget"));
         widget->setGeometry(QRect(880, 60, 291, 531));
         widget->setStyleSheet(QString::fromUtf8("background-color: rgb(243, 243, 243);"));
+        comboBox_play = new QComboBox(widget);
+        comboBox_play->addItem(QString());
+        comboBox_play->addItem(QString());
+        comboBox_play->setObjectName(QString::fromUtf8("comboBox_play"));
+        comboBox_play->setGeometry(QRect(10, 450, 100, 20));
+        comboBox_play->setMaximumSize(QSize(100, 20));
+        comboBox_play->setFont(font);
+        pushButton = new QPushButton(widget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(120, 450, 100, 20));
+        pushButton->setMaximumSize(QSize(100, 20));
         pushButton_lidar_status = new QPushButton(centralwidget);
         pushButton_lidar_status->setObjectName(QString::fromUtf8("pushButton_lidar_status"));
         pushButton_lidar_status->setGeometry(QRect(220, 10, 20, 20));
@@ -123,6 +128,7 @@ public:
         pushButton_play->setGeometry(QRect(890, 540, 100, 20));
         pushButton_play->setMaximumSize(QSize(100, 20));
         MainWindow->setCentralWidget(centralwidget);
+        pushButton_lidar_status->raise();
         listView->raise();
         widget->raise();
         verticalLayoutWidget->raise();
@@ -131,7 +137,7 @@ public:
         btn_mapping->raise();
         btn_record->raise();
         pushButton_play->raise();
-        comboBox_play->raise();
+        label_2->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 1181, 28));
@@ -158,6 +164,7 @@ public:
         comboBox_play->setItemText(1, QApplication::translate("MainWindow", "\345\256\244\345\206\205\346\250\241\345\274\217", nullptr));
 
         comboBox_play->setCurrentText(QApplication::translate("MainWindow", "\345\256\244\345\244\226\346\250\241\345\274\217", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "run", nullptr));
         pushButton_lidar_status->setText(QString());
         label_2->setText(QApplication::translate("MainWindow", "\346\277\200\345\205\211\351\233\267\350\276\276\347\212\266\346\200\201\357\274\232", nullptr));
         btn_mapping->setText(QApplication::translate("MainWindow", "mapping", nullptr));

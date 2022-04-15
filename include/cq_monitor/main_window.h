@@ -8,6 +8,7 @@
 #include <QMainWindow>
 #include <QSettings>
 #include <QMessageBox>
+#include <QFileDialog>
 
 #include "ui_main_window.h"
 #include "RvizWidget.h"
@@ -48,6 +49,7 @@ private:
 private slots:
     void on_btn_mapping_clicked();
     void slot_changeCameraType(int);
+    QString slot_openBag();
 
 private:
     QNode qnode;

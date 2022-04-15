@@ -27,10 +27,12 @@ MainWindow::~MainWindow() {
  */
 void MainWindow::connections() {
     QObject::connect(ui->btn_mapping, &QPushButton::clicked, [&]() {
-        ui->btn_mapping->setText("hello world");
+
+
     });
-    QObject::connect(ui->comboBox_play, SIGNAL(currentIndexChanged(int)), this, SLOT(slot_changeCameraType(int)));
-    QObject::connect(ui->pushButton_play, &QPushButton::clicked, [=]{QMessageBox::information(this, "information", camera_command);});
+    QObject::connect(ui->pushButton_play, SIGNAL(clicked(bool)), this, SLOT(slot_openBag()));
+    //QObject::connect(ui->comboBox_play, SIGNAL(currentIndexChanged(int)), this, SLOT(slot_changeCameraType(int)));
+//    QObject::connect(ui->pushButton_play, &QPushButton::clicked, [=]{QMessageBox::information(this, "information", camera_command);});
 }
 
 void MainWindow::ReadSettings() {
@@ -40,10 +42,10 @@ void MainWindow::ReadSettings() {
 
     if (settings.value("camera_mode", "outdoor").toString() == "outdoor") {
         camera_mode = CAMERAMODE::outdoor;
-        camera_command = "oslaunch hikrobot_camera hikrobot_camera_outdoor.launch";
+        camera_command = "roslaunch hikrobot_camera hikrobot_camera_outdoor.launch";
     } else {
         camera_mode = CAMERAMODE::indoor;
-        camera_command = "oslaunch hikrobot_camera hikrobot_camera_indoor.launch";
+        camera_command = "roslaunch hikrobot_camera hikrobot_camera_indoor.launch";
     }
 
     mapping_command =
@@ -73,6 +75,12 @@ void MainWindow::slot_changeCameraType(int index) {
             camera_command = "oslaunch hikrobot_camera hikrobot_camera_indoor.launch";
             break;
     }
+}
+
+QString MainWindow::slot_openBag() {
+    QString fileName = QFileDialog::getOpenFileName(this, "choose");
+    std::cout << fileName.toStdString() << std::endl;
+    return fileName;
 }
 
 

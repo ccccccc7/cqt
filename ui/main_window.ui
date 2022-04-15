@@ -17,7 +17,7 @@
    <widget class="QListView" name="listView">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>0</x>
       <y>0</y>
       <width>1171</width>
       <height>641</height>
@@ -110,40 +110,6 @@
      <string/>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_play">
-    <property name="geometry">
-     <rect>
-      <x>890</x>
-      <y>510</y>
-      <width>100</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>100</width>
-      <height>20</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="currentText">
-     <string>室外模式</string>
-    </property>
-    <item>
-     <property name="text">
-      <string>室外模式</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>室内模式</string>
-     </property>
-    </item>
-   </widget>
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
@@ -156,6 +122,59 @@
     <property name="styleSheet">
      <string notr="true">background-color: rgb(243, 243, 243);</string>
     </property>
+    <widget class="QComboBox" name="comboBox_play">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>450</y>
+       <width>100</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>100</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="currentText">
+      <string>室外模式</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>室外模式</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>室内模式</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>450</y>
+       <width>100</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>100</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>run</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QPushButton" name="pushButton_lidar_status">
     <property name="geometry">
@@ -270,19 +289,16 @@
      <string>play</string>
     </property>
    </widget>
+   <zorder>pushButton_lidar_status</zorder>
    <zorder>listView</zorder>
    <zorder>widget</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>horizontalLayoutWidget</zorder>
    <zorder>verticalLayoutWidget</zorder>
    <zorder>label</zorder>
    <zorder>pushButton_camera_status</zorder>
-   <zorder>verticalLayoutWidget_2</zorder>
-   <zorder>horizontalLayoutWidget_2</zorder>
    <zorder>btn_mapping</zorder>
    <zorder>btn_record</zorder>
    <zorder>pushButton_play</zorder>
-   <zorder>comboBox_play</zorder>
+   <zorder>label_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

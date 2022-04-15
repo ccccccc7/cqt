@@ -22,7 +22,8 @@ RvizWidget::RvizWidget(QVBoxLayout* layout, QString node_name) {
 
     //设置左侧参数
 
-    //
+    //topic
+
 }
 
 void RvizWidget::show() {
