@@ -2,8 +2,8 @@
  * @date 2022/4/11.
 **/
 
-#ifndef CQT_RVIZWIDGET_H
-#define CQT_RVIZWIDGET_H
+#ifndef CQT_QRVIZ_H
+#define CQT_QRVIZ_H
 
 #include <QThread>
 
@@ -15,12 +15,13 @@
 
 #include <QVBoxLayout>
 
-class RvizWidget : public QThread{
+class QRviz : public QThread{
     Q_OBJECT
 public:
-    RvizWidget(QVBoxLayout* layout, QString node_name);
+    QRviz(QVBoxLayout* layout, QString node_name);
 
     void show();
+    void displayGrid(bool enable);
 
 private:
     // rviz容器
@@ -30,7 +31,8 @@ private:
 
     QVBoxLayout* layout = NULL;
     rviz::ToolManager* tool_manager_;
+    rviz::DisplayGroup *display_group;
 };
 
 
-#endif //CQT_RVIZWIDGET_H
+#endif //CQT_QRVIZ_H

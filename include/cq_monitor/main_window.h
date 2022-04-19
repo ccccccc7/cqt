@@ -9,49 +9,73 @@
 #include <QSettings>
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QProcess>
+#include <QDebug>
+
+#include <rosbag/bag.h>
+#include <rosbag/player.h>
+#include <rosbag/recorder.h>
 
 #include "ui_main_window.h"
-#include "RvizWidget.h"
+#include "qrviz.h"
 #include "qnode.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
 Q_OBJECT
 
 public:
     MainWindow(int argc, char **argv, QWidget *parent = nullptr);
+
     ~MainWindow();
 
     void ReadSettings();         // 读取配置
     void WriteSettings();        // 写入配置
     void initUi();               // 初始化Ui
 
-    enum CAMERAMODE{
+    enum CAMERAMODE {
         indoor,
         outdoor
     };
 
 private:
     Ui::MainWindow *ui;
-    RvizWidget *rvizWidget = NULL;
+    QRviz *rvizWidget = NULL;
     QString livox_command;
     QString camera_command;
     CAMERAMODE camera_mode = CAMERAMODE::outdoor;
     QString mapping_command;
 
+
 private:
     void connections();
 
+    void initRos();
+
+    void initRviz();
+
+    int executeCmd(QString cmd);
+
 private slots:
+
     void on_btn_mapping_clicked();
+
+    void on_pushButton_recording_clicked();
+
     void slot_changeCameraType(int);
-    QString slot_openBag();
+
+    void slot_displayRviz();
+
+    void slot_openBag();
+    void cmd_output();
+    void cmd_error_output();
 
 private:
     QNode qnode;
+    QProcess *processCmd = nullptr;
 };
+
 #endif // MAINWINDOW_H

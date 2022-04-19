@@ -16,7 +16,7 @@ QNode::~QNode(){
 }
 
 bool QNode::init() {
-    ros::init(init_argc_, init_argv_, "qt_slam_ui_node");
+    ros::init(init_argc_, init_argv_, "cqt");
     if(!ros::master::check())
     {
         return false;
