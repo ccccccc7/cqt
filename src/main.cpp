@@ -1,4 +1,4 @@
-#include "../include/cq_monitor/main_window.h"
+#include "../include/cqt/main_window.h"
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QtGui>

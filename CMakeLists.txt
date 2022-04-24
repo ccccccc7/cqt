@@ -32,7 +32,7 @@ find_package(Qt5 REQUIRED ${ModuleList})
 #ui
 file(GLOB QT_FORMS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ui/*.ui)
 #头文件要放入add_executable中
-file(GLOB_RECURSE QT_MOC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} FOLLOW_SYMLINKS include/cq_monitor/*.hpp *.h)
+file(GLOB_RECURSE QT_MOC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} FOLLOW_SYMLINKS include/cqt/*.hpp *.h)
 #生成ui头文件
 QT5_WRAP_UI(QT_FORMS_HPP ${QT_FORMS})
 QT5_WRAP_CPP(QT_MOC_HPP ${QT_MOC})
@@ -45,5 +45,5 @@ file(GLOB_RECURSE QT_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} FOLLOW_SYMLINK
 
 link_directories(${Boost_LIBRARIES_DIR})
 
-add_executable(cqt ${QT_FORMS_HPP} ${QT_SOURCES} ${QT_MOC_HPP} src/qnode.cpp include/cq_monitor/qnode.h)
+add_executable(cqt ${QT_FORMS_HPP} ${QT_SOURCES} ${QT_MOC_HPP} src/qnode.cpp include/cqt/qnode.h src/record.cpp include/cqt/record.h)
 target_link_libraries (cqt ${QT_LIBRARIES} ${catkin_LIBRARIES} ${Boost_LIBRARIES}) # 工程名

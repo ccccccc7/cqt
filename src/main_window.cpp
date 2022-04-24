@@ -3,7 +3,7 @@
 **/
 #define enum_to_string(x) #x
 
-#include "../include/cq_monitor/main_window.h"
+#include "../include/cqt/main_window.h"
 
 
 MainWindow::MainWindow(int argc, char **argv, QWidget *parent)
@@ -31,8 +31,9 @@ MainWindow::~MainWindow() {
 void MainWindow::connections() {
     connect(ui->pushButton_mapping, SIGNAL(clicked()), this, SLOT(on_btn_mapping_clicked()));
     connect(ui->pushButton_play, SIGNAL(clicked()), this, SLOT(slot_openBag()));
-    connect(ui->pushButton_record, SIGNAL(clicked()), this, SLOT(on_pushButton_recording_clicked()));
+    connect(ui->pushButton_record, SIGNAL(clicked()), this, SLOT(slot_record()));
     connect(ui->comboBox_camera_type, SIGNAL(currentIndexChanged(int)), this, SLOT(slot_changeCameraType(int)));
+    connect(ui->pushButton_stopRecord, SIGNAL(clicked()), this, SLOT(slot_stopRecord()));
 }
 
 void MainWindow::ReadSettings() {
@@ -61,18 +62,6 @@ void MainWindow::on_btn_mapping_clicked() {
     executeCmd(mapping_command);
 }
 
-void MainWindow::on_pushButton_recording_clicked() {
-//    if (executeCmd(livox_command) != 0) {
-//        return;
-//    }
-//    if (executeCmd(camera_command) != 0) {
-//        return;
-//    }
-    rosbag::RecorderOptions opts;
-    opts.record_all = true;
-    rosbag::Recorder recorder(opts);
-    recorder.run();
-}
 
 void MainWindow::slot_changeCameraType(int index) {
     switch (index) {
@@ -95,14 +84,13 @@ void MainWindow::slot_openBag() {
 
     if (fileName.length() != 0) {
 
-        std::thread threadObj([&fileName] {
+        std::thread threadObj([fileName] {
             // rosbag play
             rosbag::PlayerOptions opts;
             opts.bags.push_back(fileName.toStdString());
             rosbag::Player player(opts);
             player.publish();
-            //std::bad_alloc
-            std::vector<std::basic_string<char>>().swap(opts.bags);
+
         });
         threadObj.detach();
     }
@@ -157,6 +145,40 @@ void MainWindow::cmd_error_output() {
     m.setWindowTitle("error");
     m.setText(processCmd->readAllStandardError());
     m.exec();
+}
+
+void MainWindow::slot_record() {
+    //    if (executeCmd(livox_command) != 0) {
+//        return;
+//    }
+//    if (executeCmd(camera_command) != 0) {
+//        return;
+//    }
+//    ros::NodeHandle nh;
+//    rosbag::RecorderOptions opts;
+//    opts.record_all = true;
+//
+//    Record* record = new Record(nh, opts);
+//    record->run();
+    std::string node_name = " __name:=record_node";
+    std::string cmd_str = "gnome-terminal -x bash -c 'rosbag record -a " + node_name + "'";
+    system(cmd_str.c_str());
+}
+
+void MainWindow::slot_stopRecord() {
+    stopRecord("/record_node");
+}
+
+void MainWindow::stopRecord(QString nodeName) {
+    ros::V_string v_node;
+    ros::master::getNodes(v_node);
+
+    auto it = std::find(v_node.begin(), v_node.end(), nodeName.toStdString().c_str());
+    if (it != v_node.end()){
+        std::string cmd_str = "rosnode kill " + nodeName.toStdString();
+        int ret = system(cmd_str.c_str());
+        std::cout << "## stop rosbag record cmd: " << cmd_str << std::endl;
+    }
 }
 
 

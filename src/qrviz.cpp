@@ -2,7 +2,7 @@
  * @date 2022/4/11.
 **/
 
-#include "../include/cq_monitor/qrviz.h"
+#include "../include/cqt/qrviz.h"
 QRviz::QRviz(QVBoxLayout* layout, QString node_name) {
     this->layout = layout;
     //创建rviz容器,本质也是一个QWidget

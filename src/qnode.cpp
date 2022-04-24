@@ -2,7 +2,7 @@
 // Created by dongshan on 2022/4/14.
 //
 
-#include "include/cq_monitor/qnode.h"
+#include "include/cqt/qnode.h"
 
 QNode::QNode(int argc, char **argv):init_argc_(argc), init_argv_(argv) {
 

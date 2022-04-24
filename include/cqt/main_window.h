@@ -17,6 +17,7 @@
 #include <rosbag/recorder.h>
 
 #include "ui_main_window.h"
+#include "record.h"
 #include "qrviz.h"
 #include "qnode.h"
 
@@ -59,18 +60,24 @@ private:
 
     int executeCmd(QString cmd);
 
+    void stopRecord(QString nodeName);
+
 private slots:
 
     void on_btn_mapping_clicked();
 
-    void on_pushButton_recording_clicked();
+    void slot_record();
 
     void slot_changeCameraType(int);
 
     void slot_displayRviz();
 
+    void slot_stopRecord();
+
     void slot_openBag();
+
     void cmd_output();
+
     void cmd_error_output();
 
 private:
